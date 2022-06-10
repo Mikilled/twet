@@ -1,9 +1,7 @@
-from selenium import webdriver
 from selenium_stealth import stealth
+from selenium import webdriver
 import pickle
 import time
-
-
 
 def main_opensea():
         global links
@@ -19,7 +17,6 @@ def main_opensea():
 
 
 
-
 def search_twit():
         global links
         global twiters
@@ -32,8 +29,6 @@ def search_twit():
                                 if 'twit' in b:
                                         print(b)
                                         twiters.append(b)
-
-
 
 
 
@@ -54,18 +49,11 @@ def twiter():
                         continue
 
 
-
-
 options = webdriver.ChromeOptions()
 options.add_argument("start-maximized")
-
-# options.add_argument("--headless")
-
 chrome_options = webdriver.ChromeOptions()
 prefs = {"profile.managed_default_content_settings.images": 2}
 chrome_options.add_experimental_option("prefs", prefs)
-
-
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option('useAutomationExtension', False)
 driver = webdriver.Chrome(chrome_options=chrome_options, options=options, executable_path=r"C:\chromedriver.exe")
@@ -79,14 +67,11 @@ stealth(driver,
         fix_hairline=True,
         )
 
-print("PARSER Opensea v1.1")
-print("https://chromedriver.storage.googleapis.com/index.html?path=101.0.4951.41/")
-print("должно быть установленно в корень диска c и прописано в PATH")
-
-
-
+print("PARSER Opensea v1.2.1")
 n = int(input('введите кол-во прогонов по opensea\n'))
 save = input('введите путь куда сохранить твитеры(без ковычек)\n')
+cooks = input('введите путь до куки twiter в формате pkl\n')
+#"C:\wit\cookies.pkl"
 c = 0
 globtwiters = []
 freetwit = []
@@ -101,10 +86,9 @@ while c != n:
 
 driver.get("https://twitter.com")
 time.sleep(1)
-for cookie in pickle.load(open("C:\wit\cookies.pkl", "rb")):
+for cookie in pickle.load(open(cooks, "rb")):
     driver.add_cookie(cookie)
 time.sleep(2)
-
 twiter()
 
 print(freetwit)
