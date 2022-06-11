@@ -67,7 +67,7 @@ stealth(driver,
         fix_hairline=True,
         )
 
-print("PARSER Opensea v1.2.1")
+print("PARSER Opensea v1.2.2")
 n = int(input('введите кол-во прогонов по opensea\n'))
 save = input('введите путь куда сохранить твитеры(без ковычек)\n')
 cooks = input('введите путь до куки twiter в формате pkl\n')
